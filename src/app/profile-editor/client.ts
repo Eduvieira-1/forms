@@ -6,6 +6,6 @@ export class client{
     password: string = '';
     street: string = '';
     city: string = '';
-    state: string = '';
+    state: Array<string> = [''];
     zip: number = 1;
 }

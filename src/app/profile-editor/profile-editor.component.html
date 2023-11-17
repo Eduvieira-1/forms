@@ -1,10 +1,14 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<h1>Envie seu feedback</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div style="display: flex">
+        <label>
+          Sua avaliação:
+          <app-select-field formControlName="state"></app-select-field>
+        </label>
+      </div>
 
-    <app-select-field [parentGroup]="profileForm" 
-    formControlName="name"> </app-select-field>
-    <label for="">first</label>
-    <input type="text" formControlName="firstName">
-    <button class="btn" >Enviar</button>
+      <button type="submit" [disabled]="form.invalid">Submit</button>
 
-    <p>formProfile: {{profileForm.status}} </p>
-</form>
+      <pre>{{ form.value | json }}</pre>
+      
+    </form>
