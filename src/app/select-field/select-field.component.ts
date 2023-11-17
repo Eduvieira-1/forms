@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ReactiveFormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormGroup, FormsModule, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-select-field',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule,],
   templateUrl: './select-field.component.html',
   styleUrl: './select-field.component.css',
   providers: [
@@ -16,36 +16,33 @@ import { ReactiveFormsModule, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@a
     }
   ]
 })
-export class SelectFieldComponent implements ControlValueAccessor {
+export class SelectFieldComponent implements ControlValueAccessor, OnInit {
+  
+  @Input() parentGroup: FormGroup;
 
-  states = [
-    { name: 'MG'},
-    { name: 'MT'},
-    { name: 'RJ'},
-    { name: 'BA'},
-    { name: 'SP'},
-  ];
+  name: string = '';
 
+  constructor(private formBuilder: FormBuilder) {
+  }
+  
+ 
+  
   onChange: any = () => {};
   onTouched: any = () => {};
-  touched = false;
-  disabled = false;
 
-
-  writeValue(state: string[]){
-    this.states = [{name: state[0]}]
-  }
-  registerOnChange(onChange: any){
-    this.onChange = onChange;
-  }
-  registerOnTouched(onTouched: any){
-    this.onTouched = onTouched;
-  }
-  setDisabledState(disabled: boolean): void {
-    this.disabled = disabled;
+  ngOnInit(): void{
+   
   }
 
-  ngOnInit(){
+  writeValue(name: string){
+    this.name = name;
   }
+  registerOnChange(fn: any){
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any){
+    this.onTouched = fn;
+  }
+
  
 }

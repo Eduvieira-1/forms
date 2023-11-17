@@ -1,81 +1,10 @@
-<body>
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-        <div class="container">
-            <div class="row col-12 justify-content-center formTest">
-                <h1 class="text-center pt-3">Formulario de cadastro</h1>
-                <div class="row">
-                    <div class="col-12 pt-3">
-                        <div class="row justify-content-center">
-                            <div class="col-6"> <label for="first-name">Nome: </label> <br>
-                                <input class="form-control mb-3" id="first-name" type="text" formControlName="firstName"
-                                    placeholder="Informe seu nome">
-                                <br>
-                                <label for="last-name">Sobrenome: </label> <br>
-                                <input class="form-control mb-3" id="last-name" type="text" formControlName="lastName"
-                                    placeholder="Informe seu sobrenome">
-                                <br>
-                            </div>
-                            <div class="col-6">
-                                <label for="email">Email: </label> <br>
-                                <input class="form-control mb-3" id="email" type="email" formControlName="email"
-                                    placeholder="example@hotmail.com">
-                                <br>
-                                <label for="password">Senha: </label> <br>
-                                <input class="form-control mb-3" id="password" type="password"
-                                    formControlName="password" placeholder="Informe sua senha">
-                                <br>
-                            </div>
-                        </div>
-                        <hr>
-                        <h3 class="text-center">Endereço</h3>
-                        <div formGroupName="address">
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="street">Rua: </label> <br>
-                                    <input class="form-control mb-3" id="street" type="text" formControlName="street"
-                                        placeholder="Informe sua rua">
-                                    <br>
-                                    <label for="zip">Numero: </label> <br>
-                                    <input class="form-control mb-3" id="zip" type="text" formControlName="zip"
-                                        placeholder="Informe seu numero">
-                                    <br>
-                                </div>
-                                <div class="col-6">
-                                    <label for="city">Cidade: </label> <br>
-                                    <input class="form-control mb-3" id="city" type="text" formControlName="city"
-                                        placeholder="Informe sua cidade">
-                                    <br>
-                                    <!-- <label for="state">Estado: </label> <br>
-                                <input class="form-control mb-3" id="state" type="text" formControlName="state"
-                                    placeholder="Informe seu estado">
-                                <br> -->
-                                </div>
-                            </div>
-                        </div>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 
-                        <app-select-field formControlName="stateX"> </app-select-field>
+    <app-select-field [parentGroup]="profileForm" 
+    formControlName="name"> </app-select-field>
+    <label for="">first</label>
+    <input type="text" formControlName="firstName">
+    <button class="btn" >Enviar</button>
 
-                        <hr>
-                        <div class="mb-5" formArrayName="aliases">
-                            <h3 class="text-center">Adiciona campo</h3>
-                            <button class="btn btn-outline-primary mb-4" type="text" (click)="addAlias()">Adicionar um
-                                outro campo</button>
-
-                            <div *ngFor="let alias of aliases.controls; let i=index">
-                                <label for="alias-{{i}}">Novo campo:</label>
-                                <input class="form-control" id="alias-{{i}}" type="text" [formControlName]="i">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-                <div class="col-4">
-                    <p>Complete o formulario para habilitar o botão</p>
-                    <button class="btn" [disabled]="!profileForm.valid">Enviar</button>
-                </div>
-                <p>formProfile: {{profileForm.status}} </p>
-            </div>
-        </div>
-    </form>
-</body>
+    <p>formProfile: {{profileForm.status}} </p>
+</form>

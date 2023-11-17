@@ -1,10 +1,4 @@
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <label class="input-group-text" for="input">Estados</label>
-    </div>
-    <select class="custom-select" id="inputGroupSelect01" formControlName="state">
-        <option *ngFor="let state of states">
-            {{state.name}}
-        </option>
-    </select>
+<div [formGroup]="parentGroup">
+    <label for="">Nome: </label>
+    <input type="text" formControlName="name">
 </div>
