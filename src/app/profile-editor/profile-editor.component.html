@@ -1,14 +1,59 @@
-<h1>Envie seu feedback</h1>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div style="display: flex">
-        <label>
-          Sua avaliação:
-          <app-select-field formControlName="state"></app-select-field>
-        </label>
+<div class="container">
+  <h1 class="mt-4 mb-4 text-center">Formulario de cadastro</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mb-4 border p-4 rounded">
+    <div class="form-row">
+      <button  *ngIf="disableCreateEvent" [style.opacity]="disableCreateEvent ? 0.3 : 1">Criar evento</button>
+      <div class="col-md-6 mb-3">
+        <label for="firstName">Primeiro Nome:</label>
+        <input type="text" class="form-control" formControlName="firstName" placeholder="Seu primeiro nome">
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <label for="lastName">Sobrenome:</label>
+        <input type="text" class="form-control" formControlName="lastName" placeholder="Seu sobrenome">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Seu email">
+      </div>
+      
+      <div class="col-md-6 mb-3">
+        <label for="password">Senha:</label>
+        <input type="password" class="form-control" formControlName="password" placeholder="Sua senha">
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="zip">CEP:</label>
+        <input type="text" class="form-control" formControlName="zip" placeholder="Seu CEP">
       </div>
 
-      <button type="submit" [disabled]="form.invalid">Submit</button>
+      <div class="col-md-6 mb-3">
+        <label for="street">Rua:</label>
+        <input type="text" class="form-control" formControlName="street" placeholder="Sua rua">
+      </div>
+    </div>
 
-      <pre>{{ form.value | json }}</pre>
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="city">Cidade:</label>
+        <input type="text" class="form-control" formControlName="city" placeholder="Sua cidade">
+      </div>
       
-    </form>
+      <div class="col-md-6 mb-3">
+        <label for="state">Avaliação de formulario:</label>
+        <app-select-field formControlName="state" class="form-control"></app-select-field>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Enviar</button>
+  </form>
+  
+  <pre>{{ form.value | json }}</pre>
+</div>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { client } from './client';
 import { SelectFieldComponent } from '../select-field/select-field.component';
@@ -14,13 +14,22 @@ import { SelectFieldComponent } from '../select-field/select-field.component';
 })
 export class ProfileEditorComponent {
 
-  form = new FormGroup({
-      state: new FormControl('')
-  })
+  form: FormGroup;
 
-  
-  
+  @Input() disableCreateEvent: boolean = true;
 
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      state: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', ],
+      email: ['', [, Validators.email]],
+      password: ['', [, Validators.minLength(6)]],
+      street: ['', ],
+      zip: [''],
+      city: ['', Validators.required],
+    });
+  }
 
   // ngOnInit() {
   //   this.createForm(new client());

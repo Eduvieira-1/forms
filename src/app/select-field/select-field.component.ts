@@ -21,9 +21,9 @@ type State = { city: string; ab: string };
 export class SelectFieldComponent implements ControlValueAccessor {
   
   @Input() states: State[] = [
-    {city: 'Minas', ab: 'MG'},
-    {city: 'Bahia', ab: 'BA'},
-    {city: 'Rio', ab: 'RJ'},
+    {city: 'Ruim', ab: '1'},
+    {city: 'Bom', ab: '2'},
+    {city: 'Muito bom', ab: '3'},
   ]
   
 

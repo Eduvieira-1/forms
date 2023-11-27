@@ -13,7 +13,9 @@ import { SelectFieldComponent } from './select-field/select-field.component';
     imports: [CommonModule, RouterOutlet, ReactiveFormsModule, ProfileEditorComponent, SelectFieldComponent]
 })
 export class AppComponent implements OnInit{
-  
+  apiStatus: string = 'E'; // Você pode obter esse valor de onde for apropriado
+  disableCreateEvent: boolean = this.apiStatus === 'E';
+
   constructor(){}
 
   ngOnInit(): void {
