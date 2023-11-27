@@ -2,7 +2,7 @@
   <h1 class="mt-4 mb-4 text-center">Formulario de cadastro</h1>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mb-4 border p-4 rounded">
     <div class="form-row">
-      <button  *ngIf="disableCreateEvent" [style.opacity]="disableCreateEvent ? 0.3 : 1">Criar evento</button>
+      <button [disabled]="disableCreateEvent">Criar Evento</button>
       <div class="col-md-6 mb-3">
         <label for="firstName">Primeiro Nome:</label>
         <input type="text" class="form-control" formControlName="firstName" placeholder="Seu primeiro nome">

@@ -16,7 +16,7 @@ export class ProfileEditorComponent {
 
   form: FormGroup;
 
-  @Input() disableCreateEvent: boolean = true;
+  @Input() disableCreateEvent: boolean = false;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
